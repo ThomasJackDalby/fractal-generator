@@ -1,0 +1,58 @@
+﻿<Window x:Class="Fractal_Manager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:frac="clr-namespace:Fractal_Manager"
+        xmlns:fracmvm="clr-namespace:Fractal_Manager.VM"
+        Title="{x:Static frac:Constants.Title}" Height="350" Width="525" Background="Gray">
+    <Window.Resources>
+        
+        <frac:MultiplierConverter x:Key="MultiValueConverter"/>
+        
+        <DataTemplate DataType="{x:Type fracmvm:JobVM}">
+            <Grid Margin="2" ToolTip="{Binding Tooltip}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="{Binding ID, StringFormat={}ID: {0:0}}" Grid.Column="0" Padding="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <ProgressBar Maximum="1" Minimum="0" Value="{Binding Progress}" HorizontalAlignment="Stretch" Height="25" Grid.Column="1" Padding="2"/>
+                <TextBlock Text="{Binding Progress, StringFormat=p0}" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Padding="2"/>
+            </Grid>
+        </DataTemplate>
+        
+        
+    </Window.Resources>
+    
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+
+        <ItemsControl Name="FinishedJobsList" Grid.Row="0" Grid.Column="0" Margin="1" Background="White"
+                      ItemsSource="{Binding FinishedJobs}"/>
+
+        <ItemsControl Name="RunningJobsList" Grid.Row="0" Grid.Column="1" Margin="1" Background="White"
+                      ItemsSource="{Binding RunningJobs}"/>
+
+        <ItemsControl Name="QueuedJobsList" Grid.Row="0" Grid.Column="2" Margin="1" Background="White"
+                      ItemsSource="{Binding QueuedJobs}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
+
+        <ContentControl DataContext="{Binding JobFactory}" Content="{Binding View}" Margin="1" Background="White" Grid.Row="1" Grid.ColumnSpan="3"/>        
+        
+    </Grid>
+</Window>

@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Fractal_Generator
+namespace Fractal_Manager.VM.Parameters
 {
-    [Serializable]
-    public enum FractalType
+    public interface IParameter
     {
-        Mandelbrot,
-        Julia,
+        string Name { get; set; }
     }
 }

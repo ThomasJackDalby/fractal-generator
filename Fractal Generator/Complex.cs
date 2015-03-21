@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Fractal_Generator
 {
+    [Serializable]
     public class Complex
     {
         public double Real { get; set; }
@@ -55,6 +56,15 @@ namespace Fractal_Generator
         {
             return complex * complex;
         }
+
+        public Complex Clone()
+        {
+            Complex complex = new Complex(0,0);
+            complex.Real = Real;
+            complex.Imaginary = Imaginary;
+            return complex;
+        }
+
 
         public override string ToString()
         {
