@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MvvM">
+      <HintPath>..\Fractal Manager\Resources\MvvM.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -44,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Complex.cs" />
     <Compile Include="Fractal.cs" />
+    <Compile Include="FractalCalculator.cs" />
     <Compile Include="FractalResult.cs" />
     <Compile Include="FractalType.cs" />
     <Compile Include="Limit.cs" />

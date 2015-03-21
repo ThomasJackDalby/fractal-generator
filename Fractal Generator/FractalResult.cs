@@ -16,7 +16,7 @@ namespace Fractal_Generator
 
         public string Filename { get { return String.Format("{0} ({1},{2}) ({3},{4}) {5}x{6}", Fractal.Name, Fractal.XLimit.Min, Fractal.YLimit.Min, Fractal.XLimit.Max, Fractal.YLimit.Max, Fractal.XLimit.Steps, Fractal.YLimit.Steps); } }
         public int[][] Data { get; set; }
-        public Fractal Fractal { get; set; }
+        public Fractal Fractal { get; private set; }
         public int Width { get { return Data.Length; } }
         public int Height { get { return Data[0].Length; } }
 
@@ -24,8 +24,7 @@ namespace Fractal_Generator
         {
             Fractal = fractal;
             ID = NextID++;
-            Data = GetArray(Fractal.XLimit.Steps, Fractal.YLimit.Steps);
-            GetArray(Fractal.XLimit.Steps, Fractal.YLimit.Steps);
+            Data = CreateArray(Fractal.XLimit.Steps, Fractal.YLimit.Steps);
         }
 
         public void WriteToFile()
@@ -79,7 +78,6 @@ namespace Fractal_Generator
             }
             outputBitmap.Save(filename);
         }
-
         public void WriteToImageGradient(int limit)
         {
             WriteToImageGradient(Filename + ".jpg", limit);
@@ -98,7 +96,7 @@ namespace Fractal_Generator
             outputBitmap.Save(filename);
         }
 
-        private static int[][] GetArray(int xSteps, int ySteps)
+        private static int[][] CreateArray(int xSteps, int ySteps)
         {
             int[][] Data = new int[xSteps][];
             for (int i = 0; i < xSteps; i++)
@@ -107,7 +105,6 @@ namespace Fractal_Generator
             }
             return Data;
         }
-
         private static Color ColorFromHSV(double hue, double saturation, double value)
         {
             int hi = Convert.ToInt32(Math.Floor(hue / 60)) % 6;

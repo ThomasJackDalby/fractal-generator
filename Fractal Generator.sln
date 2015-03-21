@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fractal Generator", "Fracta
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fractal Generator Test", "Fractal Generator Test\Fractal Generator Test.csproj", "{7A41867B-1881-4DB0-ACE5-4365A3904D83}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fractal Manager", "Fractal Manager\Fractal Manager.csproj", "{8393BABF-7F85-4BB9-A29F-EAF9FDE0DDA2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{7A41867B-1881-4DB0-ACE5-4365A3904D83}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A41867B-1881-4DB0-ACE5-4365A3904D83}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A41867B-1881-4DB0-ACE5-4365A3904D83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8393BABF-7F85-4BB9-A29F-EAF9FDE0DDA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8393BABF-7F85-4BB9-A29F-EAF9FDE0DDA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8393BABF-7F85-4BB9-A29F-EAF9FDE0DDA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8393BABF-7F85-4BB9-A29F-EAF9FDE0DDA2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

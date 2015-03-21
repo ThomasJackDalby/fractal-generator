@@ -83,6 +83,7 @@ namespace Fractal_Generator
             System.Diagnostics.Process.Start(filename);
         }
 
+        [Obsolete]
         public void ReadInputFile(string filename)
         {
             string[] lines = File.ReadAllLines(filename);
@@ -104,27 +105,21 @@ namespace Fractal_Generator
 
         public FractalResult RunFractal()
         {
-            Fractal fractal = new Fractal();
-            fractal.XLimit = XLimit;
-            fractal.YLimit = YLimit;
-            fractal.Name = Name;
-            fractal.iterationLimit = IterationLimit;
-            fractal.ProgressInterval = ProgressInterval;
+            FractalCalculator calculator = new FractalCalculator();
+            calculator.ProgressInterval = ProgressInterval;
+
+            Fractal fractal = new Fractal() { XLimit = XLimit, YLimit = YLimit, Name = Name };       
             fractal.FractalExpression = (Complex z, Complex c) => z.Pow(Power) + c;
             fractal.LimitExpression = (Complex x) => x.Magnitude > MagnitudeLimit;
+            fractal.IterationLimit = IterationLimit;
 
             if (Type == FractalType.Julia) fractal.C0 = C0;
 
             Console.WriteLine("---Running fractal---");
-            FractalResult result = fractal.RunFractal();
+            FractalResult result = calculator.Calculate(fractal);
             ResultsList.Add(result);
             Console.WriteLine("---Finished---");
             return result;
-        }
-
-        public void DisplayHelp()
-        {
-
         }
 
         public void ListResults()
@@ -145,7 +140,6 @@ namespace Fractal_Generator
                 exp >>= 1;
                 num *= num;
             }
-
             return result;
         }
 
