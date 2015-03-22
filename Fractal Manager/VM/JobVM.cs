@@ -12,7 +12,18 @@ namespace Fractal_Manager.VM
 {
     public abstract class JobVM : ObservableObject
     {
-        public Job Model { get; set; }
+        public abstract JobType JobType { get; }
+
+        private Job model;
+        public Job Model 
+        {
+            get { return model; }
+            set
+            {
+                model = value;
+                model.PropertyChanged += ((o, e) => OnPropertyChanged("Progress"));
+            }
+        }
 
         public int ID 
         {
@@ -40,7 +51,6 @@ namespace Fractal_Manager.VM
         public JobVM(Job model)
         {
             Model = model;
-            Model.PropertyChanged += ((o, e) => OnPropertyChanged("Progress"));
 
             Parameters = new List<IParameter>();
         }

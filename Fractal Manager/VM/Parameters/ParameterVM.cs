@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace Fractal_Manager.VM
 {
@@ -30,6 +31,8 @@ namespace Fractal_Manager.VM
         public Getter Get { get; set; }
         public Setter Set { get; set; }
 
+        public UserControl EditingView { get; set; }
+
         public Parameter()
         {
             Get = (() => { return value; });
@@ -40,6 +43,34 @@ namespace Fractal_Manager.VM
         {
             Get = get;
             Set = set;
+            EditingView = CreateEditingControl();
+        }
+
+        public UserControl CreateEditingControl()
+        {
+            if (typeof(T) == typeof(double) || typeof(T) == typeof(int)) return CreateNumberBox();
+            if (typeof(T) == typeof(string)) return CreateNumberBox();
+            if (typeof(T) == typeof(bool)) return CreateCheckBox();
+            return null;
+        }
+
+        public UserControl CreateNumberBox()
+        {
+            UserControl control = new UserControl();
+            TextBox textBox = new TextBox();
+            textBox.DataContext = this;
+            textBox.SetBinding(TextBox.TextProperty, "Value");
+            control.Content = textBox;
+            return control;
+        }
+
+        public UserControl CreateCheckBox()
+        {
+            UserControl control = new UserControl();
+            CheckBox checkBox = new CheckBox();
+            checkBox.SetBinding(CheckBox.IsCheckedProperty, "Value");
+            control.Content = checkBox;
+            return control;
         }
     }
 }

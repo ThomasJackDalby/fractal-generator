@@ -22,12 +22,13 @@ namespace Fractal_Manager.VM
             set
             {
                 jobType = value;
-                Job = jobType.GetJobVM();
+                Job = JobList.Single(x => x.JobType == value);
                 OnPropertyChanged("Job");
                 OnPropertyChanged("JobType");
             }
         }
         public JobVM Job { get; set; }
+        public List<JobVM> JobList { get; set; }
 
         public bool CreateJob { get; set; }
 
@@ -37,7 +38,8 @@ namespace Fractal_Manager.VM
         {
             View = new JobFactoryView(this);
 
-            JobType = JobType.Calculate;
+            JobList = new List<JobVM>();
+            foreach (JobType jobType in Enum.GetValues(typeof(JobType))) JobList.Add(jobType.GetJobVM());
 
             CreateNewJobCommand = new RelayCommand(new Action<object>(CreateNewJob));
         }

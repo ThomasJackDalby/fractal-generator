@@ -40,7 +40,7 @@ namespace Fractal_Generator
             Fractal clone = new Fractal();
             clone.C0 = C0.Clone();
             clone.XLimit = XLimit.Clone();
-            clone.XLimit = XLimit.Clone();
+            clone.YLimit = YLimit.Clone();
             clone.IterationLimit = IterationLimit;
             clone.MagnitudeLimit = MagnitudeLimit;
             clone.Power = Power;

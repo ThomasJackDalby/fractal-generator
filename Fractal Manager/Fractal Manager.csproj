@@ -71,6 +71,7 @@
     <Compile Include="View\JobFactoryView.xaml.cs">
       <DependentUpon>JobFactoryView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="VM\Parameters\MultiParameter.cs" />
     <Compile Include="VM\RenderFractalJobVM.cs" />
     <Compile Include="VM\CalculateFractalJobVM.cs" />
     <Compile Include="VM\JobFactory.cs" />
@@ -129,6 +130,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\MvvM.dll" />
+    <None Include="Resources\temp1.jpg" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Fractal Generator\Fractal Generator.csproj">

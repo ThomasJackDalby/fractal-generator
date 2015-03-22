@@ -16,6 +16,8 @@ namespace Fractal_Manager.VM
             set { Model = value; }
         }
 
+        public override JobType JobType { get { return JobType.Render; } }
+
         public Parameter<int> Limit { get; set; }
         public Parameter<string> OutputFilename { get; set; }
         public Parameter<string> InputFilename { get; set; }

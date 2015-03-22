@@ -33,7 +33,7 @@
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Text="{Binding Name}" Grid.Column="0"/>
-                                    <TextBox Text="{Binding Value}" Grid.Column="1"/>
+                                    <ContentControl Content="{Binding EditingView}" Grid.Column="1"/>
                                 </Grid>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>

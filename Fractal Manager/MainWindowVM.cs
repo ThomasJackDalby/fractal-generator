@@ -42,13 +42,12 @@ namespace Fractal_Manager
                 if (e.PropertyName == "CreateJob")
                 {
                     JobFactory.CreateJob = false;
-                    QueuedJobs.Add(JobFactory.Job);
-
+                    
                     Job job = JobFactory.Job.Model.Clone();
                     JobVM jobVM = JobFactory.JobType.GetJobVM();
                     jobVM.Model = job;
-                    JobFactory.Job = jobVM;
 
+                    QueuedJobs.Add(jobVM);
                     RunJobFromQueue();
                 }
             });

@@ -32,7 +32,7 @@ namespace Fractal_Manager.M
             });
 
             int[][] data = Serializer.Load<int[][]>(InputFilename);
-            Bitmap image = calculator.Render(data, Factor);
+            Bitmap image = calculator.RenderFast(data, Factor);
             image.Save(OutputFilename);
         }
 
